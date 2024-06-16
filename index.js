@@ -26,6 +26,13 @@ function handleButtonClick(event){
     //console.log(event.target);//console log event gives the object while the event.target gives the target button
     const clickedbtn = event.target.name;//gives the name of the clicked button
     if(clickedbtn==="Start"){
+       
+        //preventing multiple calling of intervals
+        if(timerId) return;
+
+        //disable the start button
+        event.target.disabled = true;
+
         timerId=setInterval(()=>{
             seconds++;
             if(seconds>58){
@@ -49,11 +56,17 @@ function handleButtonClick(event){
 
     if(clickedbtn==="Stop"){
         clearInterval(timerId);
+        timerId = 0;
+        // Enable the start button
+        document.querySelector('button[name="Start"]').disabled = false;
     }
     if(clickedbtn==="Reset"){
         clearInterval(timerId);
+        timerId = 0;
         seconds=minutes=hours=0;
         dispalyTime(hours,minutes,seconds);
+        // Enable the start button
+        document.querySelector('button[name="Start"]').disabled = false;
     }
 
 }
