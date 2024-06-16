@@ -1,0 +1,6 @@
+js has two functions for the timer
+
+1. setTimeout -> when the timer expires it calls the callback function and only once
+2. setInteerval ->when the timer expires it calls the callback function but again and again.
+
+both these functions have their id for the refence so once they are called they return a timerid;
